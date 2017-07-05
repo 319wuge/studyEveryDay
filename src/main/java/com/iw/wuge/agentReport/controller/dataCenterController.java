@@ -5,4 +5,7 @@ package com.iw.wuge.agentReport.controller;
  */
 public class dataCenterController {
 
+    public void testLogging(){
+
+    }
 }
