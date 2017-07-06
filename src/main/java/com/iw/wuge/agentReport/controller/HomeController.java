@@ -1,0 +1,41 @@
+package com.iw.wuge.agentReport.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletRequest;
+
+/**
+ * Created by Hays on 14/11/13.
+ */
+@Controller
+public class HomeController  {
+//	@Autowired
+//	private IAgentService agentService;
+//	@Autowired
+//	private BusinessExceptionFactory exceptionFactory;
+
+	@RequestMapping(value = "/index.do")
+	public String index(HttpServletRequest request) {
+//		AgentInfo agentInfo = responseLoginAgentInfo(request);
+//		responseMenu(agentInfo, request);
+		return "/index";
+	}
+
+//	@RequestMapping(value = "/error.do")
+//	public String error(HttpServletRequest request, String code, Model model) {
+//		responseLoginAgentInfo(request);
+//		BusinessException bex = exceptionFactory.createBusinessException(code);
+//		model.addAttribute("message", bex);
+//		return "/error";
+//	}
+//
+//	@RequestMapping(value = "/isLive.action")
+//	public void isLive(HttpServletRequest req, HttpServletResponse resp) {
+//		try {
+//			resp.getOutputStream().write("ok".getBytes());
+//		} catch(IOException e) {
+//			e.printStackTrace();
+//		}
+//	}
+}

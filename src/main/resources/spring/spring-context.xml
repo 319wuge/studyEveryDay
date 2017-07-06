@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd">
+
+    <context:component-scan base-package="com.iw.wuge.agentReport"/>
+
+    <!-- 配置事务管理器 -->
+    <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="transactionManager">
+        <property name="dataSource" ref="writeDataSource"/>
+    </bean>
+
+    <!--&lt;!&ndash; 注解方式配置事物 &ndash;&gt;-->
+    <!--<tx:annotation-driven/>-->
+    <!--&lt;!&ndash; Spring定时器注解开关&ndash;&gt;-->
+    <!--<task:annotation-driven />-->
+    <!--<bean class="com.manyi.iw.agent.report.exception.BusinessExceptionFactory">-->
+        <!--<property name="exceptionMsgFile" value="exception-msg.properties"/>-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash; 统一账号SOA客户端 &ndash;&gt;-->
+    <!--<bean class="com.manyi.iw.uum.soa.client.UserClient" id="uumUserClient">-->
+        <!--<property name="app" value="IWAgentReport"/>-->
+        <!--<constructor-arg value="${uum.soa}"/>-->
+    <!--</bean>-->
+
+    <!--<bean class="com.manyi.iw.uum.soa.client.AgentClient" id="uumAgentClient">-->
+        <!--<property name="app" value="IWAgentReport"/>-->
+        <!--<constructor-arg value="${uum.soa}"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="uumPriClient" class="com.manyi.iw.uum.soa.client.UumPriClient">-->
+        <!--<property name="app" value="IWAgentReport"/>-->
+        <!--<constructor-arg value="${uum.soa}"/>-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash; 房源SOANew客户端 &ndash;&gt;-->
+    <!--<bean class="com.manyi.housesoa.HouseSOAClientFactory"-->
+          <!--id="houseSOAClientFactory">-->
+        <!--<constructor-arg name="clientConfiguration">-->
+            <!--<bean class="com.manyi.housesoa.model.common.ClientConfiguration">-->
+                <!--<property name="serverUrl" value="${house.soa}" />-->
+                <!--<property name="actionSuffix" value=".rest" />-->
+                <!--<property name="app" value="iHouse" />-->
+                <!--<property name="soTimeout" value="10000" />-->
+            <!--</bean>-->
+        <!--</constructor-arg>-->
+    <!--</bean>-->
+    <!--<bean id="sellNewClient" factory-bean="houseSOAClientFactory" factory-method="createSellClient">-->
+    <!--</bean>-->
+
+    <!--<bean class="com.manyi.mls.MLSSOAClientFactory" id="mlsSOAClientFactory">-->
+        <!--<constructor-arg name="clientConfiguration">-->
+            <!--<bean class="com.manyi.mls.model.ClientConfiguration">-->
+                <!--<property name="serverUrl" value="${mls.soa}"/>-->
+                <!--<property name="actionSuffix" value=""/>-->
+                <!--<property name="app" value="IWAgentReport"/>-->
+                <!--<property name="soTimeout" value="3000"/>-->
+            <!--</bean>-->
+        <!--</constructor-arg>-->
+    <!--</bean>-->
+    <!--<bean factory-bean="mlsSOAClientFactory" factory-method="createSaleRecordClient" id="houseClient"/>-->
+
+    <!--<bean class="com.manyi.iw.usersoa.client.UserClient" id="userClient">-->
+        <!--<property name="app" value="IWAgentReport"/>-->
+        <!--<constructor-arg name="serverURL" value="${user.soa}"/>-->
+        <!--<constructor-arg name="soTimeout" value="10000"/>-->
+    <!--</bean>-->
+
+    <!--<bean class="com.manyi.iw.agentcall.soa.client.UserCallSOAClientFactory" id="userCallSOAClientFactory">-->
+        <!--<constructor-arg name="clientConfiguration">-->
+            <!--<bean class="com.manyi.iw.agentcall.soa.client.model.ClientConfiguration">-->
+                <!--<property name="actionSuffix" value=".rest"/>-->
+                <!--<property name="app" value="IWAgentReport"/>-->
+                <!--<property name="serverUrl" value="${agentcall.soa}"/>-->
+                <!--<property name="soTimeout" value="10000"/>-->
+            <!--</bean>-->
+        <!--</constructor-arg>-->
+    <!--</bean>-->
+    <!--<bean factory-bean="userCallSOAClientFactory" factory-method="createUserCallSOAClient" id="userCallSOAClient"/>-->
+
+    <!--&lt;!&ndash; 搜索SOA客户端 &ndash;&gt;-->
+    <!--<bean class="com.manyi.iw.search.client.IWSearchServiceClient"-->
+          <!--id="searchClient">-->
+        <!--<property name="app"-->
+                  <!--value="IWAgentSell"/>-->
+        <!--<constructor-arg value="${search.soa}"/>-->
+    <!--</bean>-->
+</beans>
