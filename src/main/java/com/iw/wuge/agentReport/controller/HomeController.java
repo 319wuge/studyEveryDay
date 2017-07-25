@@ -3,7 +3,7 @@ package com.iw.wuge.agentReport.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpServletRequest;
+//import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by Hays on 14/11/13.
@@ -16,7 +16,7 @@ public class HomeController  {
 //	private BusinessExceptionFactory exceptionFactory;
 
 	@RequestMapping(value = "/index.do")
-	public String index(HttpServletRequest request) {
+	public String index() {
 //		AgentInfo agentInfo = responseLoginAgentInfo(request);
 //		responseMenu(agentInfo, request);
 		return "/index";
