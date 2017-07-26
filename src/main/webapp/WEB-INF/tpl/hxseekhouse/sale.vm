@@ -1,0 +1,120 @@
+#parse("/common/constants.vm")
+<!DOCTYPE html>
+<html>
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    #parse("/common/head.vm")
+
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="page-header-fixed page-sidebar-fixed page-footer-fixed">
+    #parse("/common/topbar.vm")
+<div class="clearfix">
+</div>
+<!-- BEGIN CONTAINER -->
+<div class="page-container">
+    #parse("/common/menu.vm")
+    <!-- BEGIN CONTENT -->
+    <div class="page-content-wrapper">
+        <div class="page-content">
+            <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+            <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+            <!-- BEGIN PAGE HEADER-->
+            <!-- END PAGE HEADER-->
+            <!-- BEGIN PAGE CONTENT-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="portlet">
+                        <div class="portlet-title">
+                            <div class="caption" id="contractCountDiv">
+                                带看报表导出(售)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12" style="padding-bottom: 10px">
+                    #parse("/common/selectOrg.vm")
+                    日期&nbsp;<input id="ss" type="text" class="easyui-datebox" data-options="editable:false" value="$!startDate">—
+                        &nbsp;<input id="ee" type="text" class="easyui-datebox" data-options="editable:false" value="$!endDate">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                        <a class="btn btn-xs green" onclick="exportData()">导出Excel <i class="fa fa-share-square-o"></i></a>
+                </div>
+
+
+            </div>
+            <!-- END PAGE CONTENT-->
+        </div>
+    </div>
+    <!-- END CONTENT -->
+</div>
+<!-- END CONTAINER -->
+    #parse("/common/footer.vm")
+<iframe id="downloadExcel" style="display: none"></iframe>
+<script type="application/javascript">
+    function init(){
+
+    }
+
+    function exportData() {
+        var success = checkParams();
+        if(!success){
+            return;
+        }
+        var params = "?startDate=" + $("#ss").datebox("getValue") + "&endDate=" + $("#ee").datebox("getValue")+ "&cityId=" + getCsId()+ "&bizType=2";
+        var src = "$!{basePath}/agentreport/hxseekhouse/exportseekhouse.report";
+        $("#downloadExcel").attr("src", src + params);
+    }
+    function checkParams(){
+        var city =  $.trim($("#select_cs").combobox('getValue'));//城市
+        var startTime =  $.trim($("#ss").datebox("getValue"));//开始时间
+        var endTime =  $.trim($("#ee").datebox("getValue"));//结束时间
+        if(city == null || city == ""){
+            alert("请选择一个城市!");
+            return false;
+        }
+        if(startTime == null || startTime == ""){
+            alert("请选择查询开始时间!");
+            return false;
+        }
+        if(endTime == null || endTime == ""){
+            alert("请选择查询结束时间!");
+            return false;
+        }
+        if (startTime &&endTime) {
+            if (startTime >endTime) {
+                alert("结束时间不可小于开始时间");
+                return;
+            }
+        }
+        //时间范围不能超过30天
+        var  dateStart=new   Date(startTime.replace(/-/g,"/"));
+        dateStart.setDate(dateStart.getDate()+30);
+        var start = formateDateNoTime(dateStart);
+        if(start<endTime)
+        {
+            alert("时间间距不能超过30天！");
+            return;
+        }
+        return true;
+
+    }
+
+    var formateDateNoTime=function(dd){
+        var zr = function(n){return n<10?'0'+n:n;}
+        return (dd.getFullYear()+'-'+zr(dd.getMonth() + 1)+'-'+zr(dd.getDate()));
+    }
+
+
+</script>
+</body>
+<!-- END BODY -->
