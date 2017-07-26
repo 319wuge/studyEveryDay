@@ -17,4 +17,11 @@ public class DataCenterTest {
         IDataCenterService dataCenterService = new DataCenterServiceImpl();
         dataCenterService.testLogger();
     }
+
+    @Test
+    public void testClassDefFound(){
+        System.out.println("==================================");
+        String path2 = Thread.currentThread().getContextClassLoader().getResource("/").getPath();
+        System.out.println("path2 = " + path2);
+    }
 }
