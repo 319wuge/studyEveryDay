@@ -24,11 +24,19 @@
         <!--<property name="exceptionMsgFile" value="exception-msg.properties"/>-->
     <!--</bean>-->
 
-    <!--&lt;!&ndash; 统一账号SOA客户端 &ndash;&gt;-->
-    <!--<bean class="com.manyi.iw.uum.soa.client.UserClient" id="uumUserClient">-->
-        <!--<property name="app" value="IWAgentReport"/>-->
-        <!--<constructor-arg value="${uum.soa}"/>-->
-    <!--</bean>-->
+    <!-- StudySOA -->
+    <bean class="com.wuge.study.client.StudySOAClientFactory" id="studySOAClientFactory">
+        <constructor-arg name="clientConfiguration">
+            <bean class="com.wuge.study.client.model.ClientConfiguration">
+                <property name="serverUrl" value="${study.soa}"/>
+                <property name="actionSuffix" value=".rest"/>
+                <property name="app" value="IWAgentSale"/>
+                <property name="soTimeout" value="10000"/>
+            </bean>
+        </constructor-arg>
+    </bean>
+
+    <bean factory-bean="studySOAClientFactory" factory-method="create" id="studySaleSOAClient"/>
 
     <!--<bean class="com.manyi.iw.uum.soa.client.AgentClient" id="uumAgentClient">-->
         <!--<property name="app" value="IWAgentReport"/>-->
