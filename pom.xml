@@ -80,6 +80,17 @@
 
     <dependencies>
       <dependency>
+        <groupId>com.wuge.StudySOA</groupId>
+        <artifactId>StudySOAApi</artifactId>
+        <version>1.0-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>com.wuge.StudySOA</groupId>
+        <artifactId>StudySOAClient</artifactId>
+        <version>1.0-SNAPSHOT</version>
+      </dependency>
+
+      <dependency>
         <groupId>com.github.base</groupId>
         <artifactId>commons</artifactId>
         <version>1.0-SNAPSHOT</version>
