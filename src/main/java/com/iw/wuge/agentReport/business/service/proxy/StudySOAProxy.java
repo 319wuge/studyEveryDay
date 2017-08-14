@@ -1,5 +1,6 @@
 package com.iw.wuge.agentReport.business.service.proxy;
 
+import com.wuge.api.model.vo.LoggerResult;
 import com.wuge.study.client.StudySOAClient;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ public class StudySOAProxy {
     @Autowired
     private StudySOAClient studySOAClient;
 
-    public void  testSoa() {
-        studySOAClient.testContract();
+    public LoggerResult testSoa(String param) {
+        return studySOAClient.testContract(param);
     }
 }

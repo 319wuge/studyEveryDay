@@ -160,23 +160,23 @@
     </bean>
 
     <!-- 写DataSource -->
-    <bean id="writeDataSource" class="org.apache.commons.dbcp.BasicDataSource" scope="singleton">
-        <property name="driverClassName" value="${w.jdbc.driverClassName}"/>
-        <property name="url" value="${w.jdbc.url}"/>
-        <property name="username" value="${w.jdbc.username}"/>
-        <property name="password" value="${w.jdbc.password}"/>
-        <property name="initialSize" value="${w.jdbc.initialSize}"/>
-        <property name="maxActive" value="${w.jdbc.maxActive}"/>
-        <property name="minIdle" value="${w.jdbc.minIdle}"/>
-        <property name="maxIdle" value="${w.jdbc.maxIdle}"/>
-        <property name="removeAbandoned" value="${w.jdbc.removeAbandoned}"/>
-        <property name="removeAbandonedTimeout" value="${w.jdbc.removeAbandonedTimeout}"/>
-        <property name="logAbandoned" value="${w.jdbc.logAbandoned}"/>
-        <property name="maxWait" value="${w.jdbc.maxWait}"/>
-        <property name="validationQuery" value="select 1"/>
-        <property name="testWhileIdle" value="true"/>
-        <property name="minEvictableIdleTimeMillis" value="900000"/>
-    </bean>
+    <!--<bean id="writeDataSource" class="org.apache.commons.dbcp.BasicDataSource" scope="singleton">-->
+        <!--<property name="driverClassName" value="${w.jdbc.driverClassName}"/>-->
+        <!--<property name="url" value="${w.jdbc.url}"/>-->
+        <!--<property name="username" value="${w.jdbc.username}"/>-->
+        <!--<property name="password" value="${w.jdbc.password}"/>-->
+        <!--<property name="initialSize" value="${w.jdbc.initialSize}"/>-->
+        <!--<property name="maxActive" value="${w.jdbc.maxActive}"/>-->
+        <!--<property name="minIdle" value="${w.jdbc.minIdle}"/>-->
+        <!--<property name="maxIdle" value="${w.jdbc.maxIdle}"/>-->
+        <!--<property name="removeAbandoned" value="${w.jdbc.removeAbandoned}"/>-->
+        <!--<property name="removeAbandonedTimeout" value="${w.jdbc.removeAbandonedTimeout}"/>-->
+        <!--<property name="logAbandoned" value="${w.jdbc.logAbandoned}"/>-->
+        <!--<property name="maxWait" value="${w.jdbc.maxWait}"/>-->
+        <!--<property name="validationQuery" value="select 1"/>-->
+        <!--<property name="testWhileIdle" value="true"/>-->
+        <!--<property name="minEvictableIdleTimeMillis" value="900000"/>-->
+    <!--</bean>-->
 
     <!--<bean id="writeSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">-->
         <!--<property name="dataSource" ref="writeDataSource"/>-->

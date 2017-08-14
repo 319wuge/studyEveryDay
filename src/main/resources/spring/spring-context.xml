@@ -11,10 +11,11 @@
 
     <context:component-scan base-package="com.iw.wuge.agentReport"/>
 
+    <context:property-placeholder location="classpath:config.properties"/>
     <!-- 配置事务管理器 -->
-    <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="transactionManager">
-        <property name="dataSource" ref="writeDataSource"/>
-    </bean>
+    <!--<bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="transactionManager">-->
+        <!--<property name="dataSource" ref="writeDataSource"/>-->
+    <!--</bean>-->
 
     <!--&lt;!&ndash; 注解方式配置事物 &ndash;&gt;-->
     <!--<tx:annotation-driven/>-->
@@ -25,18 +26,18 @@
     <!--</bean>-->
 
     <!-- StudySOA -->
-    <bean class="com.wuge.study.client.StudySOAClientFactory" id="studySOAClientFactory">
+    <bean class="com.wuge.study.client.StudySOAClientFactory" id="StudySOAClientFactory">
         <constructor-arg name="clientConfiguration">
             <bean class="com.wuge.study.client.model.ClientConfiguration">
                 <property name="serverUrl" value="${study.soa}"/>
                 <property name="actionSuffix" value=".rest"/>
-                <property name="app" value="IWAgentSale"/>
+                <property name="app" value="studyEveryDay"/>
                 <property name="soTimeout" value="10000"/>
             </bean>
         </constructor-arg>
     </bean>
 
-    <bean factory-bean="studySOAClientFactory" factory-method="create" id="studySaleSOAClient"/>
+    <bean factory-bean="StudySOAClientFactory" factory-method="create" id="StudySOAClient"/>
 
     <!--<bean class="com.manyi.iw.uum.soa.client.AgentClient" id="uumAgentClient">-->
         <!--<property name="app" value="IWAgentReport"/>-->
