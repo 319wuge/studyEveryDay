@@ -1,4 +1,4 @@
-package com.iw.wuge.agentReport.business.service;
+package com.iw.wuge.agentReport.business.service.service;
 
 /**
  * Created by Administrator on 2017/7/6 0006.
