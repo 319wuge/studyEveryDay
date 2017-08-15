@@ -21,7 +21,7 @@
 
     <bean class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver" id="viewResolver">
         <property name="prefix" value=""></property>
-        <property name="suffix" value=".vm"/>
+        <property name="suffix" value=".html"/>
         <property name="cache" value="true"/>
         <property name="exposeSpringMacroHelpers">
             <value>true</value>
@@ -36,7 +36,7 @@
         <property name="toolboxConfigLocation">
             <value>WEB-INF/classes/toolbox.xml</value>
         </property>
-        <property name="layoutUrl" value="/layout/empty.vm"/>
+        <!--<property name="layoutUrl" value="/layout/empty.vm"/>-->
         <property name="viewClass" value="org.springframework.web.servlet.view.velocity.VelocityLayoutView"/>
     </bean>
 
@@ -83,5 +83,5 @@
     <!--</mvc:interceptors>-->
 
     <!-- 定义无Controller的path<->view直接映射 -->
-    <mvc:view-controller path="/" view-name="redirect:/index.do"/>
+    <mvc:view-controller path="/" view-name="redirect:/admin/index"/>
 </beans>
