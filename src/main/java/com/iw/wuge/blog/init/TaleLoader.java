@@ -5,6 +5,7 @@ import com.blade.config.BConfig;
 import com.blade.kit.FileKit;
 import com.iw.wuge.blog.controller.admin.AttachController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.lang.reflect.Method;
 import java.net.URI;
@@ -22,15 +23,16 @@ public final class TaleLoader {
     private TaleLoader() {
     }
 
-    public static void init() {
+    public static void init(HttpServletRequest request) {
         BConfig bConfig = $().bConfig();
         loadPlugins(bConfig);
-        loadThemes(bConfig);
+        loadThemes(bConfig, request);
     }
 
-    public static void loadThemes(BConfig bConfig) {
-
-        String themeDir = AttachController.CLASSPATH + "templates/themes";
+    public static void loadThemes(BConfig bConfig, HttpServletRequest request) {
+        String [] s = request.getRequestURL().toString().split("/");
+        String path = s[0] + "//" + s[2] +"/";
+        String themeDir = path + "templates/themes";
         try {
             themeDir = new URI(themeDir).getPath();
         } catch (URISyntaxException e) {
