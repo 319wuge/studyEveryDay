@@ -281,18 +281,18 @@
       </dependency>
 
         <!-- provided -->
-        <dependency>
-          <groupId>javax.servlet</groupId>
-          <artifactId>javax.servlet-api</artifactId>
-          <version>${servlet.api.version}</version>
-          <scope>provided</scope>
-        </dependency>
-        <dependency>
-          <groupId>javax.servlet.jsp</groupId>
-          <artifactId>javax.servlet.jsp-api</artifactId>
-          <version>${jsp.api.version}</version>
-          <scope>provided</scope>
-        </dependency>
+           <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>${servlet.api.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>javax.servlet.jsp</groupId>
+        <artifactId>javax.servlet.jsp-api</artifactId>
+        <version>${jsp.api.version}</version>
+        <scope>provided</scope>
+      </dependency>
 
 <!--tale框架开始 -->
       <!-- mvc -->
@@ -365,9 +365,13 @@
           <include>*.xml</include>
           <include>spring/*</include>
           <include>excel-template/*</include>
-          <include>mybatis/**/*</include>
+          <!--<include>mybatis/**/*</include>-->
           <include>velocity.properties</include>
           <include>exception-msg.properties</include>
+          <include>plugins/*</include>
+          <include>templates/*/*</include>
+          <include>templates/*</include>
+          <include>app.properties</include>
         </includes>
 
         <excludes>

@@ -23,16 +23,14 @@ public final class TaleLoader {
     private TaleLoader() {
     }
 
-    public static void init(HttpServletRequest request) {
+    public static void init() {
         BConfig bConfig = $().bConfig();
         loadPlugins(bConfig);
-        loadThemes(bConfig, request);
+        loadThemes(bConfig);
     }
 
-    public static void loadThemes(BConfig bConfig, HttpServletRequest request) {
-        String [] s = request.getRequestURL().toString().split("/");
-        String path = s[0] + "//" + s[2] +"/";
-        String themeDir = path + "templates/themes";
+    public static void loadThemes(BConfig bConfig) {
+        String themeDir = AttachController.CLASSPATH + "templates/themes";
         try {
             themeDir = new URI(themeDir).getPath();
         } catch (URISyntaxException e) {

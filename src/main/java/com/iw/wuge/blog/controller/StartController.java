@@ -16,8 +16,8 @@ import static com.blade.Blade.$;
 public class StartController {
 
     @RequestMapping(value = "index2.do")
-    public void startIt(HttpServletRequest request) {
-        TaleLoader.init(request);
+    public void startIt() {
+        TaleLoader.init();
         $().start(Application.class);
     }
 }
