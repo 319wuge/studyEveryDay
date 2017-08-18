@@ -372,6 +372,7 @@
           <include>templates/*/*</include>
           <include>templates/*</include>
           <include>app.properties</include>
+          <include>schema.sql</include>
         </includes>
 
         <excludes>

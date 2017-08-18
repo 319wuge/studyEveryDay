@@ -42,29 +42,29 @@ public class BaseInterceptor implements Interceptor {
         LOGGE.info("UserAgent: {}", request.userAgent());
         LOGGE.info("用户访问地址: {}, 来路地址: {}", uri, ip);
 
-        if (!TaleConst.INSTALL && !uri.startsWith("/install")) {
-            response.go("/install");
-            return false;
-        }
+//        if (!TaleConst.INSTALL && !uri.startsWith("/install")) {
+//            response.go("/install");
+//            return false;
+//        }
 
-        if (TaleConst.INSTALL) {
-            Users user = TaleUtils.getLoginUser();
-            if (null == user) {
-                Integer uid = TaleUtils.getCookieUid(request);
-                if (null != uid) {
-                    user = usersService.byId(Integer.valueOf(uid));
-                    request.session().attribute(TaleConst.LOGIN_SESSION_KEY, user);
-                }
-            }
-
-            if(uri.startsWith("/admin") && !uri.startsWith("/admin/login")){
-                if(null == user){
-                    response.go("/admin/login");
-                    return false;
-                }
-                request.attribute("plugin_menus", TaleConst.plugin_menus);
-            }
-        }
+//        if (TaleConst.INSTALL) {
+//            Users user = TaleUtils.getLoginUser();
+//            if (null == user) {
+//                Integer uid = TaleUtils.getCookieUid(request);
+//                if (null != uid) {
+//                    user = usersService.byId(Integer.valueOf(uid));
+//                    request.session().attribute(TaleConst.LOGIN_SESSION_KEY, user);
+//                }
+//            }
+//
+//            if(uri.startsWith("/admin") && !uri.startsWith("/admin/login")){
+//                if(null == user){
+//                    response.go("/admin/login");
+//                    return false;
+//                }
+//                request.attribute("plugin_menus", TaleConst.plugin_menus);
+//            }
+//        }
         String method = request.method();
         if(method.equals("GET")){
             String csrf_token = UUID.UU64();
