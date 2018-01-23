@@ -34,7 +34,7 @@ public class WebSocketUse {
         //template.convertAndSend("/topic/collectionMessage",message);
         WebSocketUse webSocketUse = new WebSocketUse();
        // webSocketUse.get();
-        String result = webSocketUse.post("http://www.baidu.com/", null , "{'wd':'测试'}", 20000, 20000);
+        String result = webSocketUse.get("http://www.baidu.com/", null , "{'wd':'测试'}", 20000, 20000);
         System.out.println(result);
     }
 
@@ -52,8 +52,9 @@ public class WebSocketUse {
             postentity.setContentType("application/json");
 //            httpget.setEntity(postentity);
 //            httpget.s
-            if (null != headers)
+            if (null != headers) {
                 httpget.setHeader("Content-Type", headers.get("Content-Type"));
+            }
             httpget.setHeader("Accept", "application/json");
             // 设置请求和传输超时时间
             RequestConfig requestConfig = RequestConfig.custom()
@@ -61,7 +62,7 @@ public class WebSocketUse {
                     .setConnectTimeout(connectTimeout)
                     .setStaleConnectionCheckEnabled(true)
                     .build();
-            httppost.setConfig(requestConfig);
+            httpget.setConfig(requestConfig);
 
             // 执行get请求.
             CloseableHttpResponse response = httpclient.execute(httpget);
@@ -74,8 +75,7 @@ public class WebSocketUse {
                 if (entity != null) {
                     // 打印响应内容长度
                     System.out.println("Response content length: " + entity.getContentLength());
-                    // 打印响应内容
-                    System.out.println("Response content: " + EntityUtils.toString(entity));
+                    return EntityUtils.toString(entity);
                 }
                 System.out.println("------------------------------------");
             } finally {
@@ -95,6 +95,7 @@ public class WebSocketUse {
                 e.printStackTrace();
             }
         }
+        return "";
     }
 
     public static String post(String url, Map<String, String> headers, String jsonParam, int connectTimeout, int readTimeout) {
