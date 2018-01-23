@@ -1,0 +1,39 @@
+###parse("/tpl/common/constants.vm")
+<!DOCTYPE html>
+<html>
+<html lang="en" class="no-js">
+<head>
+    #parse("/tpl/common/head.vm")
+</head>
+<body class="page-header-fixed page-sidebar-fixed page-footer-fixed">
+#parse("/tpl/common/topbar.vm")
+<div class="clearfix">
+</div>
+<div class="page-container">
+    #parse("/tpl/common/menu.vm")
+    <div class="page-content-wrapper">
+        <div class="page-content">
+        </div>
+    </div>
+</div>
+#parse("/tpl/common/footer.vm")
+</body>
+
+<script>
+    function connect() {
+        var stompClient = null;
+        // let socket = new SockJS("http://control.yqguan.com/manage/message");
+        var socket = new SockJS("http://control.uanguang.co.id/manage/message");
+//				let socket = new SockJS("http://control.uanguang.id/manage/message");
+        // let socket = new SockJS("http://192.168.0.133:8088/manage/message");
+        stompClient = Stomp.over(socket);
+        stompClient.connect({}, (frame) = > {
+            // console.log(frame);
+            stompClient.subscribe('/topic/collectionMessage', (greeting) = > {
+//            this.showGreeting(greeting);
+    });
+    });
+    }
+</script>
+
+</html>

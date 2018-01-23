@@ -15,11 +15,11 @@ public class HomeController  {
 //	@Autowired
 //	private BusinessExceptionFactory exceptionFactory;
 
-	@RequestMapping(value = "/index.do")
+	@RequestMapping(value = "/login.do")
 	public String index() {
 //		AgentInfo agentInfo = responseLoginAgentInfo(request);
 //		responseMenu(agentInfo, request);
-		return "/index";
+		return "/login";
 	}
 
 //	@RequestMapping(value = "/error.do")

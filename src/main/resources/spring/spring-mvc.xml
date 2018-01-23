@@ -18,9 +18,9 @@
     </bean>
 
 
-    <bean class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver" id="viewResolver">
+    <bean class="org.springframework.web.servlet.view.velocity.VelocityViewResolver" id="viewResolver">
         <property name="prefix" value=""></property>
-        <property name="suffix" value=".html"/>
+        <property name="suffix" value=".vm"/>
         <property name="cache" value="true"/>
         <property name="exposeSpringMacroHelpers">
             <value>true</value>
@@ -36,7 +36,7 @@
             <value>WEB-INF/classes/toolbox.xml</value>
         </property>
         <!--<property name="layoutUrl" value="/layout/empty.vm"/>-->
-        <property name="viewClass" value="org.springframework.web.servlet.view.velocity.VelocityLayoutView"/>
+        <!--<property name="viewClass" value="org.springframework.web.servlet.view.velocity.VelocityLayoutView"/>-->
     </bean>
 
     <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
