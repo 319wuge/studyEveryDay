@@ -2,25 +2,15 @@
 <!DOCTYPE html>
 <html>
 <html lang="en" class="no-js">
-<head>
-    #parse("/tpl/common/head.vm")
-</head>
-<body class="page-header-fixed page-sidebar-fixed page-footer-fixed">
-#parse("/tpl/common/topbar.vm")
-<div class="clearfix">
-</div>
-<div class="page-container">
-    #parse("/tpl/common/menu.vm")
-    <div class="page-content-wrapper">
-        <div class="page-content">
-        </div>
-    </div>
-</div>
-#parse("/tpl/common/footer.vm")
-</body>
-
+<script type="text/javascript" src="/static/admin/js/sockjs.min.js" ></script>
+<script type="text/javascript" src="/static/admin/js/stomp.js" ></script>
+<script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
 <script>
-    function connect() {
+//    $(function () {
+//
+//    })
+    $(document).ready(function () {
+
         var stompClient = null;
         // let socket = new SockJS("http://control.yqguan.com/manage/message");
         var socket = new SockJS("http://control.uanguang.co.id/manage/message");
@@ -31,9 +21,10 @@
             // console.log(frame);
             stompClient.subscribe('/topic/collectionMessage', (greeting) = > {
 //            this.showGreeting(greeting);
+//            alert(greeting);
+        });
     });
-    });
-    }
+    })
 </script>
 
 </html>

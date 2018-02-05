@@ -3,6 +3,7 @@ package com.iw.wuge.agentReport.scheuding;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
 import org.apache.http.ParseException;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.config.RequestConfig;
@@ -18,6 +19,9 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
@@ -30,28 +34,37 @@ public class WebSocketUse {
     @Autowired
     private SimpMessagingTemplate template;
 
+    @RequestMapping(value = "test", method = RequestMethod.POST)
+    @ResponseBody
+    public String testWebSockeUse() {
+        template.convertAndSend("/topic/collectionMessage","wuge");
+        return "wuge";
+    }
     public static void main(String[] args) {
         //template.convertAndSend("/topic/collectionMessage",message);
         WebSocketUse webSocketUse = new WebSocketUse();
        // webSocketUse.get();
-        String result = webSocketUse.get("http://www.baidu.com/", null , "{'wd':'测试'}", 20000, 20000);
+        JSONObject result = webSocketUse.get("http://htpmsg.jiecaojingxuan.com/msg/current", null ,  30000, 30000);
         System.out.println(result);
+        while(true) {
+            if ("no data".equals(result.get("msg"))){
+                continue;
+            }
+            String question = "";
+            String answer = "";
+            JSONObject baiduStr = webSocketUse.get("http://www.baidu.com/s?wd=" + question.replaceAll("不", "") , null , 3000, 3000);
+
+        }
     }
 
     /**
      * 发送 get请求
      */
-    public String get(String url, Map<String, String> headers, String jsonParam, int connectTimeout, int readTimeout) {
+    public JSONObject get(String url, Map<String, String> headers, int connectTimeout, int readTimeout) {
         CloseableHttpClient httpclient = HttpClients.createDefault();
         try {
             // 创建httpget.
-            HttpGet httpget = new HttpGet("http://www.baidu.com/");
-            System.out.println("executing request " + httpget.getURI());
-
-            StringEntity postentity = new StringEntity(JSONObject.parse(jsonParam).toString(), "utf-8");
-            postentity.setContentType("application/json");
-//            httpget.setEntity(postentity);
-//            httpget.s
+            HttpGet httpget = new HttpGet(url);
             if (null != headers) {
                 httpget.setHeader("Content-Type", headers.get("Content-Type"));
             }
@@ -67,17 +80,12 @@ public class WebSocketUse {
             // 执行get请求.
             CloseableHttpResponse response = httpclient.execute(httpget);
             try {
-                // 获取响应实体
-                HttpEntity entity = response.getEntity();
-                System.out.println("--------------------------------------");
-                // 打印响应状态
-                System.out.println(response.getStatusLine());
-                if (entity != null) {
-                    // 打印响应内容长度
-                    System.out.println("Response content length: " + entity.getContentLength());
-                    return EntityUtils.toString(entity);
+                //进行编码转换
+                if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+                    HttpEntity entity = response.getEntity();
+                    String strResult = EntityUtils.toString(entity, "utf-8");
+                    return JSONObject.parseObject(strResult);
                 }
-                System.out.println("------------------------------------");
             } finally {
                 response.close();
             }
@@ -95,7 +103,7 @@ public class WebSocketUse {
                 e.printStackTrace();
             }
         }
-        return "";
+        return null;
     }
 
     public static String post(String url, Map<String, String> headers, String jsonParam, int connectTimeout, int readTimeout) {

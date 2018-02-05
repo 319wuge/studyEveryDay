@@ -15,6 +15,7 @@
     <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <javac.target.version>1.8</javac.target.version>
+    <tomcat.version>7.0.59</tomcat.version>
 
     <manyi.common.version>0.2.2-SNAPSHOT</manyi.common.version>
     <manyi.lbdatasource.version>0.1-SNAPSHOT</manyi.lbdatasource.version>
@@ -158,6 +159,13 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-websocket</artifactId>
         <version>1.2.8.RELEASE</version>
+        <!-- 排除内置容器，排除内置容器导出成war包可以让外部容器运行spring-boot项目-->
+        <exclusions>
+          <exclusion>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
       <dependency>
         <groupId>org.springframework</groupId>
@@ -375,6 +383,17 @@
         <groupId>org.apache.httpcomponents</groupId>
         <artifactId>httpmime</artifactId>
         <version>4.3.6</version>
+      </dependency>
+
+      <!--<dependency>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
+        <!--<scope>provided</scope>-->
+      <!--</dependency>-->
+      <dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-juli</artifactId>
+        <version>${tomcat.version}</version>
       </dependency>
 
     </dependencies>

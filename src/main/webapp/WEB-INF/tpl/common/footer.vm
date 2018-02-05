@@ -109,4 +109,4 @@
 <script type="text/javascript" src="$!static.getURL("easyui/locale/easyui-lang-zh_CN.js")"></script>
 <script type="text/javascript" src="$!static.getURL("easyui/jquery.easyui.patch.js")"></script>
 <!-- END JAVASCRIPTS -->
-#parse("/common/growing.vm")
+###parse("/common/growing.vm")
