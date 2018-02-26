@@ -6,9 +6,6 @@
 <script type="text/javascript" src="/static/admin/js/stomp.js" ></script>
 <script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
 <script>
-//    $(function () {
-//
-//    })
     $(document).ready(function () {
 
         var stompClient = null;
