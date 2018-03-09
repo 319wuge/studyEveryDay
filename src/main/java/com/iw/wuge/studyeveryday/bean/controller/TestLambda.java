@@ -37,6 +37,8 @@ public class TestLambda {
 //        List<Worker> newList = workers.stream().map(e -> new Worker(e.getId() + 1, e.getWorkYear(), e.getAge(), e.getName()))
 //                .collect(Collectors.toList());
 //        newList.forEach(System.out :: println);
+        workers.stream().forEach(elem-> elem.setAge(123));
+        System.out.println(workers);
 
 //        Integer total = workers.stream().map(e -> e.getAge()).reduce((sum, e) -> sum + e).get();
 //        System.out.println(total);
@@ -54,8 +56,12 @@ public class TestLambda {
 //        System.out.println(start.getCount());
 //        System.out.println(start.getMax());
 //        System.out.println(start.getSum());
-        Executors.newSingleThreadExecutor();
+//        Executors.newSingleThreadExecutor();
 
+//Integer a = 1;
+//Integer b = a;
+//Integer c = a;
+//        System.out.println(c == b);
 
     }
 
