@@ -22,7 +22,7 @@
     <commons.logging.version>1.2</commons.logging.version>
     <log4j.version>1.2.17</log4j.version>
     <slf4j.version>1.7.7</slf4j.version>
-    <springframework.version>4.1.1.RELEASE</springframework.version>
+    <springframework.version>5.3.19</springframework.version>
     <spring.context.support.version>4.0.3.RELEASE</spring.context.support.version>
     <springframework.security.version>3.2.5.RELEASE</springframework.security.version>
     <jackson.version>2.7.2</jackson.version>
